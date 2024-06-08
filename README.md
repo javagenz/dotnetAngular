@@ -6,6 +6,9 @@ masuk kedalam folder yang sudah di create <br>
 cd MyAngularApp <br>
 lalu create project angular di dalammnya <br>
 ng new ClientApp <br>
+tambahkan library <br>
+dotnet add package Microsoft.AspNetCore.SpaServices.Extensions <br>
+dotnet add package Swashbuckle.AspNetCore <br>
 
 #Ujicoba <br>
 dotnet run <br>
