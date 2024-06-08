@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MyAngularApp")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5785197a2cee35c7e0bf21814dade99a1d9a68f5")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d0c401f7c4c433ae32b41858354709e588928da9")]
 [assembly: System.Reflection.AssemblyProductAttribute("MyAngularApp")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MyAngularApp")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

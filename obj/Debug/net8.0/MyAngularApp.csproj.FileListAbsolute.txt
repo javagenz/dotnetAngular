@@ -112,3 +112,4 @@
 /Users/bonie/Documents/Training/dotnet/MyAngularApp/obj/Debug/net8.0/MyAngularApp.pdb
 /Users/bonie/Documents/Training/dotnet/MyAngularApp/obj/Debug/net8.0/MyAngularApp.genruntimeconfig.cache
 /Users/bonie/Documents/Training/dotnet/MyAngularApp/obj/Debug/net8.0/ref/MyAngularApp.dll
+/Users/bonie/Documents/Training/dotnet/MyAngularApp/bin/Debug/net8.0/Swashbuckle.AspNetCore.Annotations.dll

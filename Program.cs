@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.OpenApi.Models;
 using MyAngularApp.Data;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -18,14 +19,21 @@ builder.Services.AddDbContext<MyDbContext>(options =>
 
 builder.Services.AddEndpointsApiExplorer();
 
-builder.Services.AddSwaggerGen(c =>
+// builder.Services.AddSwaggerGen(c =>
 
-{
+// {
 
-    c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo { Title = "My API", Version = "v1" });
+//     c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo { Title = "My API", Version = "v1" });
 
-});
+// });
 //end 
+builder.Services.AddSwaggerGen(c =>
+{
+    c.SwaggerDoc("v1", new OpenApiInfo { Title = "My API", Version = "v1" });
+
+    // Add Swagger annotations (tags and operation descriptions) to controller actions
+    c.EnableAnnotations();
+});
 
 builder.Services.AddSpaStaticFiles(configuration =>
 {
@@ -71,6 +79,11 @@ app.UseHttpsRedirection();
 
 app.UseRouting();
 
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapControllers();
+});
+
 app.UseAuthorization();
 
 app.MapControllerRoute(
@@ -88,5 +101,6 @@ app.UseSpa(spa =>
         spa.UseProxyToSpaDevelopmentServer("http://localhost:4200");
     }
 });
+
 
 app.Run();

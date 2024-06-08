@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using MyAngularApp.models;
 
 namespace MyAngularApp.Data
 {
@@ -10,6 +11,8 @@ namespace MyAngularApp.Data
         }
 
         public DbSet<MyEntity> MyEntities { get; set; }
+
+        public DbSet<User> Users { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
