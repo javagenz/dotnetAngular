@@ -10,6 +10,11 @@ ng new ClientApp <br>
 dotnet add package Microsoft.AspNetCore.SpaServices.Extensions <br>
 dotnet add package Swashbuckle.AspNetCore <br>
 dotnet add package Npgsql.EntityFrameworkCore.PostgreSQL<br>
+dotnet tool install --global dotnet-ef <br>
+dotnet tool update --global dotnet-ef <br>
+dotnet ef migrations add InitialCreate <br>
+dotnet ef database update<br>
+
  ##Ujicoba <br>
 dotnet run <br>
 ng build --configuration production <br>
