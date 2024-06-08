@@ -24,3 +24,4 @@ ng serve <br>
   #Macbook <br>
 netstat -ano | findstr :4200<br>
 #Windows <br>
+netstat -ano | findstr :4200
