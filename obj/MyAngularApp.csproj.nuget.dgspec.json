@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/Users/bonie/Documents/Training/dotnet/MyAngularApp/MyAngularApp.csproj": {}
+    "D:\\git\\jgz\\dotnetAngular\\MyAngularApp.csproj": {}
   },
   "projects": {
-    "/Users/bonie/Documents/Training/dotnet/MyAngularApp/MyAngularApp.csproj": {
+    "D:\\git\\jgz\\dotnetAngular\\MyAngularApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/bonie/Documents/Training/dotnet/MyAngularApp/MyAngularApp.csproj",
+        "projectUniqueName": "D:\\git\\jgz\\dotnetAngular\\MyAngularApp.csproj",
         "projectName": "MyAngularApp",
-        "projectPath": "/Users/bonie/Documents/Training/dotnet/MyAngularApp/MyAngularApp.csproj",
-        "packagesPath": "/Users/bonie/.nuget/packages/",
-        "outputPath": "/Users/bonie/Documents/Training/dotnet/MyAngularApp/obj/",
+        "projectPath": "D:\\git\\jgz\\dotnetAngular\\MyAngularApp.csproj",
+        "packagesPath": "C:\\Users\\IDstar\\.nuget\\packages\\",
+        "outputPath": "D:\\git\\jgz\\dotnetAngular\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/bonie/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\IDstar\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -93,7 +93,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.301/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.301/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
