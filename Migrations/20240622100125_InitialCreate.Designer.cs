@@ -11,7 +11,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace MyAngularApp.Migrations
 {
     [DbContext(typeof(MyDbContext))]
-    [Migration("20240608122647_InitialCreate")]
+    [Migration("20240622100125_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -19,12 +19,13 @@ namespace MyAngularApp.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
+                .HasDefaultSchema("dotnet")
                 .HasAnnotation("ProductVersion", "8.0.6")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("MyEntity", b =>
+            modelBuilder.Entity("MyAngularApp.models.MyEntity", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -38,7 +39,32 @@ namespace MyAngularApp.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("MyEntities");
+                    b.ToTable("MyEntities", "dotnet");
+                });
+
+            modelBuilder.Entity("MyAngularApp.models.User", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Username")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Users", "dotnet");
                 });
 #pragma warning restore 612, 618
         }

@@ -11,8 +11,12 @@ namespace MyAngularApp.Migrations
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.EnsureSchema(
+                name: "dotnet");
+
             migrationBuilder.CreateTable(
                 name: "MyEntities",
+                schema: "dotnet",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
@@ -23,13 +27,34 @@ namespace MyAngularApp.Migrations
                 {
                     table.PrimaryKey("PK_MyEntities", x => x.Id);
                 });
+
+            migrationBuilder.CreateTable(
+                name: "Users",
+                schema: "dotnet",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Username = table.Column<string>(type: "text", nullable: false),
+                    Email = table.Column<string>(type: "text", nullable: false),
+                    Password = table.Column<string>(type: "text", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Users", x => x.Id);
+                });
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "MyEntities");
+                name: "MyEntities",
+                schema: "dotnet");
+
+            migrationBuilder.DropTable(
+                name: "Users",
+                schema: "dotnet");
         }
     }
 }
