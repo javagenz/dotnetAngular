@@ -39,8 +39,8 @@ using Swashbuckle.AspNetCore.Annotations;
 namespace MyAngularApp.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
-    [SwaggerTag("Endpoints untuk mengelola data pengguna")]
+    [Route("users/[controller]")]
+   // [SwaggerTag("Endpoints untuk mengelola data pengguna")]
     public class UsersController : ControllerBase
     {
         private readonly MyDbContext _context;
@@ -51,13 +51,23 @@ namespace MyAngularApp.Controllers
         }
 
         [HttpGet] // This attribute should be applied to methods
-        [Route("")] // You can specify route here or in the controller level
-        [SwaggerOperation("Mendapatkan daftar pengguna", Tags = new[] { "Pengguna" })]
-        [ProducesResponseType(typeof(IEnumerable<User>), 200)]
+        [Route("userdata")] // You can specify route here or in the controller level
+        //[SwaggerOperation("Mendapatkan daftar pengguna", Tags = new[] { "users" })]
+        //[ProducesResponseType(typeof(IEnumerable<User>), 200)]
         public ActionResult<IEnumerable<User>> GetUsers()
         {
             var users = _context.Users.ToList();
             return Ok(users);
+        }
+
+        [HttpGet] // This attribute should be applied to methods
+        [Route("databaru")] // You can specify route here or in the controller level
+        //[SwaggerOperation("Mendapatkan daftar baru", Tags = new[] { "users" })]
+        //[ProducesResponseType(typeof(IEnumerable<Databaru>), 200)]
+        public ActionResult<IEnumerable<Databaru>> GetDatabaru()
+        {
+            var data = _context.Databaru.ToList();
+            return Ok(data);
         }
     }
 }

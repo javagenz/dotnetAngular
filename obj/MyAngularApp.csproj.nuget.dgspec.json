@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/bonie/Documents/Training/dotnet/MyAngularApp/MyAngularApp.csproj": {}
+    "/Users/bonie/Documents/Training/dotnet/dotnetAngular/MyAngularApp.csproj": {}
   },
   "projects": {
-    "/Users/bonie/Documents/Training/dotnet/MyAngularApp/MyAngularApp.csproj": {
+    "/Users/bonie/Documents/Training/dotnet/dotnetAngular/MyAngularApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/bonie/Documents/Training/dotnet/MyAngularApp/MyAngularApp.csproj",
+        "projectUniqueName": "/Users/bonie/Documents/Training/dotnet/dotnetAngular/MyAngularApp.csproj",
         "projectName": "MyAngularApp",
-        "projectPath": "/Users/bonie/Documents/Training/dotnet/MyAngularApp/MyAngularApp.csproj",
+        "projectPath": "/Users/bonie/Documents/Training/dotnet/dotnetAngular/MyAngularApp.csproj",
         "packagesPath": "/Users/bonie/.nuget/packages/",
-        "outputPath": "/Users/bonie/Documents/Training/dotnet/MyAngularApp/obj/",
+        "outputPath": "/Users/bonie/Documents/Training/dotnet/dotnetAngular/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/bonie/.nuget/NuGet/NuGet.Config"
@@ -67,7 +67,7 @@
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
-              "version": "[6.6.2, )"
+              "version": "[6.5.0, )"
             },
             "Swashbuckle.AspNetCore.Annotations": {
               "target": "Package",

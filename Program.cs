@@ -1,6 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using MyAngularApp.Data;
+using MyAngularApp.Services;
+using MyAngularApp.Query;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,6 +15,9 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<MyDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+builder.Services.AddScoped<IProfilService, ProfilService>();
+builder.Services.AddScoped<ProfilQuery>();
+builder.Services.AddScoped<IServiceDua, ServiceDua>();
 
 
 // Tambahkan Swagger
@@ -35,10 +40,10 @@ builder.Services.AddSwaggerGen(c =>
     c.EnableAnnotations();
 });
 
-builder.Services.AddSpaStaticFiles(configuration =>
-{
-    configuration.RootPath = "ClientApp/dist";
-});
+// builder.Services.AddSpaStaticFiles(configuration =>
+// {
+//     configuration.RootPath = "ClientApp/dist";
+// });
 
 var app = builder.Build();
 
@@ -59,10 +64,10 @@ if (app.Environment.IsDevelopment())
     });
     //end
 
-    app.UseSpa(spa =>
-    {
-        spa.UseProxyToSpaDevelopmentServer("http://localhost:4200");
-    });
+    // app.UseSpa(spa =>
+    // {
+    //     spa.UseProxyToSpaDevelopmentServer("http://localhost:4200");
+    // });
 }
 else
 {
