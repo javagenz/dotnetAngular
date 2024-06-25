@@ -1,111 +1,92 @@
-using Microsoft.EntityFrameworkCore;
-using Microsoft.OpenApi.Models;
-using MyAngularApp.Data;
-using MyAngularApp.Services;
-using MyAngularApp.Query;
+// Mengimpor pustaka yang diperlukan
+using Microsoft.EntityFrameworkCore;  // Menggunakan Entity Framework Core untuk ORM
+using Microsoft.OpenApi.Models;  // Menggunakan OpenAPI untuk dokumentasi API
+using MyAngularApp.Data;  // Mengimpor namespace untuk akses data
+using MyAngularApp.Services;  // Mengimpor namespace untuk layanan
+using MyAngularApp.Query;  // Mengimpor namespace untuk query
 
+// Membuat builder aplikasi web
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+// Menambahkan layanan kontroler dengan tampilan ke dalam container layanan
 builder.Services.AddControllersWithViews();
 
-// Konfigurasi DbContext untuk PostgreSQL
-// builder.Services.AddDbContext<MyDbContext>(options =>
-//     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+// Menambahkan layanan DbContext untuk database PostgreSQL
 builder.Services.AddDbContext<MyDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-builder.Services.AddScoped<IProfilService, ProfilService>();
-builder.Services.AddScoped<ProfilQuery>();
-builder.Services.AddScoped<IServiceDua, ServiceDua>();
+// Menambahkan layanan scoped untuk injeksi ketergantungan
+builder.Services.AddScoped<IProfilService, ProfilService>();  // Layanan profil
+builder.Services.AddScoped<ProfilQuery>();  // Query profil
+builder.Services.AddScoped<IServiceDua, ServiceDua>();  // Layanan kedua
 
-
-// Tambahkan Swagger
-
+// Menambahkan layanan untuk dokumentasi API
 builder.Services.AddEndpointsApiExplorer();
 
-// builder.Services.AddSwaggerGen(c =>
-
-// {
-
-//     c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo { Title = "My API", Version = "v1" });
-
-// });
-//end 
+// Mengonfigurasi Swagger untuk dokumentasi API
 builder.Services.AddSwaggerGen(c =>
 {
-    c.SwaggerDoc("v1", new OpenApiInfo { Title = "My API", Version = "v1" });
-
-    // Add Swagger annotations (tags and operation descriptions) to controller actions
-    c.EnableAnnotations();
+    c.SwaggerDoc("v1", new OpenApiInfo { Title = "My API", Version = "v1" });  // Membuat dokumentasi API versi 1
+    c.EnableAnnotations();  // Mengaktifkan anotasi Swagger
 });
 
-// builder.Services.AddSpaStaticFiles(configuration =>
-// {
-//     configuration.RootPath = "ClientApp/dist";
-// });
-
+// Membangun aplikasi web
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+// Mengonfigurasi pipeline permintaan HTTP
 if (app.Environment.IsDevelopment())
 {
-    app.UseDeveloperExceptionPage();
-    
-    // Aktifkan Swagger hanya di development
-    app.UseSwagger();
-
+    app.UseDeveloperExceptionPage();  // Menggunakan halaman pengecualian pengembang
+    app.UseSwagger();  // Mengaktifkan Swagger hanya di environment development
     app.UseSwaggerUI(c =>
-
     {
-
-        c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
-
+        c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");  // Menambahkan endpoint untuk Swagger UI
     });
-    //end
 
-    // app.UseSpa(spa =>
-    // {
-    //     spa.UseProxyToSpaDevelopmentServer("http://localhost:4200");
-    // });
+    app.UseSpa(spa =>
+    {
+        spa.UseProxyToSpaDevelopmentServer("http://localhost:4200");  // Mengarahkan ke server pengembangan SPA
+    });
 }
 else
 {
-    app.UseExceptionHandler("/Error");
-    app.UseHsts();
+    app.UseExceptionHandler("/Error");  // Menangani pengecualian dengan halaman kesalahan
+    app.UseHsts();  // Menggunakan HTTP Strict Transport Security (HSTS)
 }
 
+// Mengalihkan permintaan HTTP ke HTTPS
 app.UseHttpsRedirection();
-// app.UseStaticFiles();
-// if (!app.Environment.IsDevelopment())
-// {
-//     app.UseSpaStaticFiles();
-// }
 
+// Menggunakan middleware routing
 app.UseRouting();
 
+// Mengonfigurasi endpoint untuk kontroler
 app.UseEndpoints(endpoints =>
 {
-    endpoints.MapControllers();
+    endpoints.MapControllers();  // Memetakan kontroler ke endpoint
 });
 
+// Menggunakan middleware otorisasi
 app.UseAuthorization();
 
+// Mengonfigurasi rute default untuk kontroler
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller}/{action=Index}/{id?}");
 
+// Mengonfigurasi fallback untuk file index.html
 app.MapFallbackToFile("index.html");
 
+// Mengonfigurasi penggunaan aplikasi satu halaman (SPA)
 app.UseSpa(spa =>
 {
-    spa.Options.SourcePath = "ClientApp";
+    spa.Options.SourcePath = "ClientApp";  // Menentukan path sumber untuk aplikasi klien
 
     if (app.Environment.IsDevelopment())
     {
-        spa.UseProxyToSpaDevelopmentServer("http://localhost:4200");
+        spa.UseProxyToSpaDevelopmentServer("http://localhost:4200");  // Mengarahkan ke server pengembangan SPA
     }
 });
 
-
+// Menjalankan aplikasi
 app.Run();

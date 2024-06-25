@@ -116,7 +116,6 @@
 /Users/bonie/Documents/Training/dotnet/dotnetAngular/bin/Debug/net8.0/appsettings.Development.json
 /Users/bonie/Documents/Training/dotnet/dotnetAngular/bin/Debug/net8.0/appsettings.json
 /Users/bonie/Documents/Training/dotnet/dotnetAngular/bin/Debug/net8.0/ClientApp/angular.json
-/Users/bonie/Documents/Training/dotnet/dotnetAngular/bin/Debug/net8.0/ClientApp/dist/client-app/prerendered-routes.json
 /Users/bonie/Documents/Training/dotnet/dotnetAngular/bin/Debug/net8.0/ClientApp/package-lock.json
 /Users/bonie/Documents/Training/dotnet/dotnetAngular/bin/Debug/net8.0/ClientApp/package.json
 /Users/bonie/Documents/Training/dotnet/dotnetAngular/bin/Debug/net8.0/ClientApp/tsconfig.app.json
